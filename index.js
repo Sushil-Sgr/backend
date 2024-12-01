@@ -49,18 +49,18 @@ app.get("/posts/:id", (req, res) => {
     let post = posts.find((p) => id == p.id);
     res.render("show.ejs", { post });
 })
-// app.get("/posts/:id/edit", (req, res) => {
-//     let { id } = req.params;
-//     let post = posts.find((p) => id == p.id);
-//     res.render("edit.ejs", { post });
-// })
+app.get("/posts/:id/edit", (req, res) => {
+    let { id } = req.params;
+    let post = posts.find((p) => id == p.id);
+    res.render("edit.ejs", { post });
+})
 app.patch('/posts/:id', (req, res) => {
     let { id } = req.params;
     let post = posts.find((p) => id == p.id);
     let newContent = req.body.content
     post.content = newContent
     console.log(post,"patch re");
-    // res.redirect("post.ejs")
+    res.redirect("post.ejs")
 
 
 
